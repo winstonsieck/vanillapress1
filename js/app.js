@@ -1,9 +1,8 @@
-
 /**
  * Main app file.  Initializes app components.
  */
-
 const articleContainer = document.getElementById('pageContent');
+const siteNameLink = document.getElementById('siteName').firstChild;
 let vanillaPress = {};
 var parsedJSONposts;
 
@@ -14,11 +13,13 @@ var parsedJSONposts;
 vanillaPress.init = function() {
 
     parsedJSONposts = JSON.parse(jsonData);
-    console.log(parsedJSONposts[0].slug);
+//    console.log(parsedJSONposts[0].slug);
 
     vanillaPress.clearPosts();
     vanillaPress.render( parsedJSONposts );
+
 }
+
 
 
 /******************************************************
@@ -41,6 +42,15 @@ vanillaPress.getTitleMarkup = function( post ) {
     titleLinkEl.appendChild( title );
     titleLinkEl.href = '#' + post.slug;
     titleEl.appendChild( titleLinkEl );
+
+    function showSinglePost( event ) {
+        event.preventDefault();
+        vanillaPress.clearPosts();
+        vanillaPress.renderPost( post );
+//       console.log("hello");
+    }
+
+    titleLinkEl.addEventListener( 'click', showSinglePost, false );
 
     return titleEl;
 
@@ -103,12 +113,21 @@ vanillaPress.clearPosts = function() {
 };
 
 //Run it
+
 vanillaPress.init();
 
 
 
-// todo When click on post title: [1] Clear content, [2] Display post content
-
+// When click on post title: [1] Clear content, [2] Display post content
+// nested under getTitleMarkup
 
 
 // todo When click on a site title, display all blog posts
+
+vanillaPress.reset = function( event ) {
+    event.preventDefault();
+    vanillaPress.init();
+
+}
+
+siteNameLink.addEventListener( 'click', vanillaPress.reset, false );
