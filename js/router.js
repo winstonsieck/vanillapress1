@@ -35,11 +35,10 @@ router.getSlug = function() {
     if( slug === "" ) {
         return null;
     } else {
-        return slug.substring(1);
+        return slug.substring( 1 );
     }
 
 };
-
 
 
 /**
@@ -71,7 +70,7 @@ router.loadContent = function() {
 
   } else {
 
-      console.log( 'Load post ' + slug );
+      view.loadBlogPost( slug );
 
   }
 
