@@ -16,7 +16,7 @@ var view = {};
 
 view.init = function() {
 
-    view.loadBlogPosts();
+    //view.loadBlogPosts();
 
 };
 
@@ -72,3 +72,20 @@ view.createPostMarkup = function( post ) {
     return articleEl;
 
 };
+
+
+/**
+ * clearPosts - Clear titles and main content from page
+ *
+ */
+
+view.clearContent = function() {
+
+    var titleEl = helpers.getPageTitleEl(),
+        contentEl = helpers.getPageContentEl();
+
+    titleEl.innerHTML = '';
+    contentEl.innerHTML = '';
+
+};
+

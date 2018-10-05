@@ -12,8 +12,9 @@ var vanillaPress = {
     init: function() {
 
         model.init();
+        router.init();
         view.init();
-     //   console.log(helpers.getPageContentEl() );
+
     }
 
 
