@@ -23,7 +23,7 @@ model.init = function() {
 
 model.getPosts = function() {
 
-    var posts = model.getLocalStore();
+    var posts = model.getLocalStore()['posts'];
     return posts;
 
 };
@@ -37,7 +37,7 @@ model.getPosts = function() {
 
 model.getPost = function( slug ) {
 
-    var posts = model.getLocalStore();
+    var posts = model.getLocalStore()['posts'];
 
     for(i=0; i < posts.length; i++) {
         if (slug === posts[i].slug) {
