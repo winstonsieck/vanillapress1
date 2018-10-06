@@ -42,19 +42,30 @@ view.loadBlogPosts = function() {
 };
 
 /**
- * Loads a single blog post
+ * Display a single post or page based on the URL
  *
  * @param slug {string} Post to create markup for
  */
 
-view.loadBlogPost = function( slug ) {
+view.loadSingleContent = function( slug ) {
 
-  var post = model.getPost( slug ),
+  var contentObj = model.getPost( slug ),
       titleEl = helpers.getPageTitleEl(),
       contentEl = helpers.getPageContentEl();
 
-    titleEl.innerHTML = post.title;
-    contentEl.innerHTML = post.content;
+  if( contentObj === null ) {
+      contentObj = model.getPage( slug );
+  }
+
+  if( contentObj === null ) {
+      contentObj = {
+          title: '404 Error',
+          content: 'Content not found'
+      };
+  }
+
+    titleEl.innerHTML = contentObj.title;
+    contentEl.innerHTML = contentObj.content;
 
 };
 

@@ -44,7 +44,7 @@ model.getPost = function( slug ) {
             return posts[i];
         }
     }
-    console.log('no post for slug');
+//    console.log('no post for slug');
     return null;
 };
 
