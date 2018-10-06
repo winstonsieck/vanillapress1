@@ -16,7 +16,7 @@ var view = {};
 
 view.init = function() {
 
-    //view.loadBlogPosts();
+    view.createMainMenu();
 
 };
 
@@ -56,6 +56,24 @@ view.loadBlogPost = function( slug ) {
     titleEl.innerHTML = post.title;
     contentEl.innerHTML = post.content;
 
+};
+
+/**
+ * Creates Main Menu Links for Pages
+ *
+ */
+
+view.createMainMenu = function() {
+
+  var pages = model.getPages(),
+      menuMarkup = document.createDocumentFragment(),
+      mainMenuEl = helpers.getMainMenuEl();
+
+    for( i=0; i < pages.length; i++ ) {
+        menuMarkup.appendChild( helpers.createMenuItem( pages[i] ) );
+    }
+
+    mainMenuEl.appendChild( menuMarkup );
 };
 
 /**

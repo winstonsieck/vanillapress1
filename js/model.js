@@ -12,7 +12,7 @@ var model = {};
 model.init = function() {
 
     model.updateLocalStore( data );
-    console.log( model.getPage( 'about' ) );
+    //console.log( model.getPage( 'about' ) );
 };
 
 /**
